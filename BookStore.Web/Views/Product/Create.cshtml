@@ -1,0 +1,73 @@
+﻿@model ProductViewModel;
+<div class="w-100 card border-0 p-4">
+    <div class="card-header bg-success bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Add Book</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body border p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <div class="p-3">
+                @* <div asp-validation-summary="All"></div>  *@
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Product.Title" class="form-control border shadow" />
+                    <label asp-for="Product.Title" class="ms-2"></label>
+                    <span asp-validation-for="Product.Title" class="text-danger"></span>
+                </div>
+                 <div class="form-floating py-2 col-12">
+                     <select asp-for="Product.CategoryId" asp-items="Model.CategoryList" class="form-select border-0 shadow">
+                         <option disabled selected>--select category--</option>
+                     </select>
+                    <label asp-for="Product.CategoryId" class="ms-2"></label>
+                    <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+                 </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Product.Description" class="form-control border shadow" />
+                    <label asp-for="Product.Description" class="ms-2"></label>
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Product.ISBN" class="form-control border shadow" />
+                    <label asp-for="Product.ISBN" class="ms-2"></label>
+                    <span asp-validation-for="Product.ISBN" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Product.Author" class="form-control border shadow" />
+                    <label asp-for="Product.Author" class="ms-2"></label>
+                    <span asp-validation-for="Product.Author" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Product.Price" class="form-control border shadow" />
+                    <label asp-for="Product.Price" class="ms-2"></label>
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Product.ProductImage" hidden class="form-control border shadow" />
+                    <input type="file" asp-for="Product.ProductImage" name="img" class="form-control border shadow" />
+                    <label asp-for="Product.ProductImage" class="ms-2 "></label>
+                    <span asp-validation-for="Product.ProductImage" class="text-danger"></span>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-success w-100">
+                            <i class="bi bi-check-circle"></i> Create
+                        </button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary w-100">
+                            <i class="bi bi-x-circle"></i> Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
